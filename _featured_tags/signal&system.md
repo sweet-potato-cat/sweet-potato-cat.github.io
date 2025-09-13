@@ -1,8 +1,8 @@
 ---
 layout: tag-list
 type: tag
-title: Signal & System
-slug: signal
+title: signal&system
+slug: signal&system
 category: studylog
 sidebar: true
 description: >
