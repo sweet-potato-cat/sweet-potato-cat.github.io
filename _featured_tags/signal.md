@@ -1,10 +1,10 @@
 ---
 layout: tag-list
 type: tag
-title: Algorithm
-slug: algorithm
+title: Signal & System
+slug: signal & system
 category: studylog
 sidebar: true
 description: >
-   Algorithm study / Problem solutions
+   Rust related posts
 ---

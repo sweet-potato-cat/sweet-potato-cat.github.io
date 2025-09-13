@@ -50,7 +50,6 @@ author:
   social:
     linkedin:          노찬영-학생-소프트웨어융합대학-컴퓨터공학부-%E2%80%8D-313159384/
     github:            sweet-potato-cat
-    stackoverflow:     4294737
     email:             cksdud2605@khu.ac.kr
 
 # Add links to the footer.
@@ -387,8 +386,10 @@ plugins:
   - jekyll-include-cache
   - jekyll-last-modified-at
   - jemoji
+  - jekyll-paginate
 
-
+paginate: 10
+paginate_path: "/:num/"
 # SEO Tag
 # ---------------------------------------------------------------------------------------
 

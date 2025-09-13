@@ -1,10 +1,10 @@
 ---
 layout: tag-list
 type: tag
-title: Rust
-slug: rust
+title: Deep Learning
+slug: deeplearning
 category: studylog
 sidebar: true
 description: >
-   Rust related posts
+   C++ related posts
 ---

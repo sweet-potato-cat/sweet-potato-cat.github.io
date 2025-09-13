@@ -280,6 +280,7 @@ DEPENDENCIES
   github-pages
   jekyll-compose
   jekyll-include-cache
+  jekyll-paginate
   webrick (~> 1.7)
 
 BUNDLED WITH

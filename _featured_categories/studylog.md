@@ -1,10 +1,10 @@
 ---
 layout: list
 type: category
-title: Study Log
+title: KHU Study
 slug: studylog
 sidebar: true
-order: 3
+order: 2
 description: >
   Log study results
 ---

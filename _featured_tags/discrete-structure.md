@@ -1,10 +1,10 @@
 ---
 layout: tag-list
 type: tag
-title: C++
-slug: cpp
+title: Discrete Structrure
+slug: discrete structure
 category: studylog
 sidebar: true
 description: >
-   C++ related posts
+   Rust related posts
 ---
