@@ -5,7 +5,7 @@ permalink: /resume/
 description: >
   Hi, I'm DaeIn Lee.
 hide_description: true
-sidebar: true
+sidebar: false
 order: 5
 left_column:
  - work
