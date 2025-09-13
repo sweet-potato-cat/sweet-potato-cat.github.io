@@ -2,7 +2,7 @@
 layout: tag-list
 type: tag
 title: Signal & System
-slug: signal & system
+slug: signal
 category: studylog
 sidebar: true
 description: >
