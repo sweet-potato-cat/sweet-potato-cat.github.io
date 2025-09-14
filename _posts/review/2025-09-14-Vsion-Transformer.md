@@ -5,7 +5,7 @@ subtitle: "an image is worth 16x16 words transformers for image recognition at s
 category: review
 tags: ai
 image:
-  path: /assets/img/paperreview/vit_architecture.jpeg
+  path: /assets/img/paper-review/vit_architecture.jpg
 ---
 
 기존에 Vision 분야에서 쓰이던 pre-training, transfer learning을 NLP 테스크에서 응용했는데 이제는 Transformer 아키텍처가 Vision 분야에 쓰이는 것이 흥미로워서 이 논문을 선택해 리뷰하게 되었습니다.
@@ -39,7 +39,7 @@ Attention Architecture는 Computing Resource만 infinite 하다면 이론적으�
 
 
 ## 모델
-![Model Architecture](/assets/img/paperreview/vit_architecture.jpeg)
+![Model Architecture](/assets/img/paperreview/vit_architecture.jpg)
 
 ### VIT
 
