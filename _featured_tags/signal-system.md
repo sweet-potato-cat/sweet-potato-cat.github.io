@@ -1,7 +1,7 @@
 ---
 layout: tag-list
 type: tag
-title: signal-system
+title: Signal-System
 slug: signal-system
 category: studylog
 sidebar: true
