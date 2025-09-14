@@ -38,7 +38,7 @@ Attention Architecture는 Computing Resource만 infinite 하다면 이론적으�
 * 
 
 ## 모델
-![Model Architecture](/assets/img/PaperReview/vit_architecture.jpg)
+![Model Architecture](/assets/img/paperreview/vit_architecture.jpg)
 
 ### VIT
 ### FINE-TUNING AND HIGHER RESOLUTION
