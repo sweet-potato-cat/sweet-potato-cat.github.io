@@ -7,6 +7,14 @@ tags: ai
 image:
   path: /assets/img/PaperReview/vit_architecture.jpg
 ---
+
+NLP 테스크에서 주로 쓰이던 Transformer 아키텍처가 Vision 분야에 쓰이는 것이 흥미로워서 이 논문을 선택해 리뷰하게 되었습니다.
+
+<!--more-->
+
+* this unordered seed list will be replaced by the toc
+{:toc}
+
 ## 개요
 ## 선행연구
 * Transformer architecture (Vaswani et al., 2017)
