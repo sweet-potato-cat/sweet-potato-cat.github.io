@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "모델 고양이"
+title: "모델 냥이"
 subtitle: "달빛 속에 달구경하는 냥이"
 category: photo
 tags: photo cat
