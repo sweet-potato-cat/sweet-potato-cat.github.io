@@ -6,5 +6,5 @@ slug: deeplearning
 category: studylog
 sidebar: true
 description: >
-   C++ related posts
+   Deep Learning course
 ---

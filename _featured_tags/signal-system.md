@@ -6,5 +6,5 @@ slug: signal-system
 category: studylog
 sidebar: true
 description: >
-   Rust related posts
+   Signal & System course
 ---

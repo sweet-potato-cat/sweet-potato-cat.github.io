@@ -6,5 +6,5 @@ slug: algorithm
 category: studylog
 sidebar: true
 description: >
-   Algorithm study / Problem solutions
+   Algorithm study / LeetCode Problem solutions
 ---

@@ -213,13 +213,13 @@ comments:
 giscus:
   repo:                "sweet-potato-cat/sweet-potato-cat.github.io"
   repo-id:             "R_kgDOPvQybw"
-  category:            "Comments"
-  category-id:         "DIC_kwDOEHDTNc4B-MIg"
+  category:            "Announcements"
+  category-id:         "DIC_kwDOPvQyb84Cvad7"
   mapping:             "pathname"
   reaction-enabled:    "1"
   data-emit-metadata:  "0"
   theme:               "dark_dimmed"
-  data-lang:           "en"
+  data-lang:           "ko"
   crossorigin:         "anonymous"
 
 lightbox:              true

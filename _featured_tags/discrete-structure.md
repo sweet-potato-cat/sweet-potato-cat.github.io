@@ -6,5 +6,5 @@ slug: discrete structure
 category: studylog
 sidebar: true
 description: >
-   Rust related posts
+   Discrete Structure course
 ---
