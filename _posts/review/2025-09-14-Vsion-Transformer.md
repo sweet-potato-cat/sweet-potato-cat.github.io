@@ -22,6 +22,7 @@ image:
 이에, CNN에 의존하지 않고, 이미지를 패치로 분할해 순수 Transformer에 직접 입력하는 방식을 제안했으며, 이미지 패치를 NLP의 단어 토큰 처럼 취급해서 Transformer에 입력한 것이 이 논문의 가장 큰 특징이라고 생각했다.<br>
 논문의 가설을 통해 얻은 가장 주요한 결과는 **Huge Data**로 pre-training 한 후에, transfer learning을 하면 VIT가 SOTA CNN과 비슷하거나 더 나은 성능을 보인다는 것이다.<br>
 * 즉, 방대한 데이터와 전이학습만 있으면 CNN의 의존없이 Attention으로 높은 성능을 낼 수 있음!
+
 ## 선행연구
 Transformer를 CNN에 도입했다 보니, Attention is All You Need 논문에서 제기된 이론인 Transformer Architecture와 Self-Attention mechanism 이론이 본 논문에서 사용되었다.
 * Transformer Architecture (Vaswani et al., 2017)
