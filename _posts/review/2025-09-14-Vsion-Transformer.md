@@ -28,12 +28,12 @@ Transformer를 CNN에 도입했다 보니, Attention is All You Need 논문에�
 * Self-Attention mechanism
 ### Transformer Architecture
 Transformer Architecture는 기존 Seq2Seq 모델의 단점을 보안하고자 고안되었다.<br>
-* 1. Can't process at parallel<br>
-* 2. Long Distance Dependency Problem<br><br>
+1. Can't process at parallel
+2. Long Distance Dependency Problem<br><br>
 시퀀스의 특성상 순차적으로 입력을 해야 했기에 parallel process conducting이 불가하고, 이 때문에 대규모의 데이터 처리에서는 매우 긴 시간이 필요하다.<br>
 또 Reference window의 크기가 한정되어 있기 때문에 시퀀스에서 멀리 떨어진 문장 또는 항목들과의 관계성은 학습이 되지 않았다.<br>
 Attention Architecture는 Computing Resource만 infinite 하다면 이론적으로는 reference window 또한 infinite 하다.<br>
-또한, 기존 병렬화 문제가 해결되고 모든 Query 는 각각의 Key와 비교되기 때문에 Long Distance Dependency Problem 또한 해결될 수 있다
+또한, 기존 병렬화 문제가 해결되고 모든 Query 는 각각의 Key와 비교되기 때문에 Long Distance Dependency Problem 또한 해결될 수 있다<br>
 ### Self-Attention mechanism
 
 
