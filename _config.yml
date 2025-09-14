@@ -20,7 +20,7 @@
 lang:                  ko-KR, en-US
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 SweetPotatoCat
+title:                 고구마냥이
 
 timezone:              Asia/Seoul
 
@@ -31,7 +31,7 @@ description:           >
 
 # A shorter description for the sidebar.
 tagline:               >
-  wanna be sweetpotato
+  🐈고구마가 되고 싶어🍠
 
 # A list of keywords for your blog
 keywords:              ["AI", "C++", "Vision", "iot"]
