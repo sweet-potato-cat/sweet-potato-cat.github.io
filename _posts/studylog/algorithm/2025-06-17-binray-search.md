@@ -2,7 +2,7 @@
 layout: post
 title: "C++ 이진 탐색/이분 탐색(Binary Search)"
 subtitle: "C++ Binary Search"
-category: devlog
+category: studylog
 tags: algorithm
 image:
   path: /assets/img/2020-08-17/soju.jpg

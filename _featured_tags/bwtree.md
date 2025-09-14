@@ -4,7 +4,7 @@ type: tag
 title: Bw-Tree
 slug: bwtree
 category: devlog
-sidebar: true
+sidebar: false
 description: >
    [OpenBwTree](https://github.com/LazyRen/BwTree) Analysis for Grad Thesis
 ---

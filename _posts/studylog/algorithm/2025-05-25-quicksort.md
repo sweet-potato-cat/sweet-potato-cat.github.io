@@ -2,7 +2,7 @@
 layout: post
 title: "C++ Quick Sort 구현하기"
 subtitle: "C++ Quick Sort Implementation"
-category: devlog
+category: studylog
 tags: algorithm
 ---
 

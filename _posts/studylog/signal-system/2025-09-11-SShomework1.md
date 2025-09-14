@@ -3,7 +3,7 @@ layout: post
 title: "신호와시스템 1주차 과제"
 subtitle: "Signal & System Week1 homework"
 category: studylog
-tags: signal&system
+tags: signal-system
 image:
   path: /assets/img/StudyLog/2.png
 ---

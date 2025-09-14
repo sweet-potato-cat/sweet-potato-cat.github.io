@@ -2,7 +2,7 @@
 layout: post
 title: "Coding Interview Question: Compression and Decompression"
 subtitle: "Compression and Decompression"
-category: devlog
+category: studylog
 tags: algorithm coding-interview
 ---
 
