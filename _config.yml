@@ -202,7 +202,7 @@ comments:
 # Make sure all variables are set properly. Check below link for detail.
 # https://utteranc.es/
 # utterances:
-#   repo:                "LazyRen/LazyRen.github.io"
+#   repo:                "sweet-potato-cat/sweet-potato-cat.github.io"
 #   issue-term:          "pathname"
 #   label:               "Comments"
 #   theme:               "photon-dark"
@@ -481,3 +481,4 @@ feed:
     - devlog
     - review
     - studylog
+    - project
