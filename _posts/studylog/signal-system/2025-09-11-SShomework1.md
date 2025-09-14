@@ -20,7 +20,7 @@ image:
 [Ark68 SE]: https://arkstudio.shop/product/group-buy-ark68-r2/
 
 <div class="iframe-container">
-    <iframe src="https://www.youtube.com/watch?v=OkpC7Z6aEec&list=PL_iJu012NOxcDuKgSjTKJZJd3bQtkAyZU&index=11" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/cPF36_5Q_xg?si=ZlKuFF4noAXXiCbZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 선형성 판단 문제 풀이 영상.
