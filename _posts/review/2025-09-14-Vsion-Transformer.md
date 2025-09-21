@@ -51,9 +51,22 @@ Attention 메커니즘은 Query, Key를 내적해서 코사인 유사도를 구�
 
 ### VIT
 
-VIT 모델은 기존 Transformer 모델을 가능한 한 변형없이 사용하기 때문에 입력값이 1D sequence of token dembedding이 되기 위해서 2D 이미지들을 $$x \in \mathbb{R}^{H \times W \times C}$$
+VIT 모델은 기존 Transformer 모델을 가능한 한 변형없이 사용하기 때문에 입력값이 1D sequence of token dembedding이 되기 위해서 2D 이미지들을 $$x \in \mathbb{R}^{H \times W \times C}$$ (H는 높이, W는 너비 C는 채널 개수다 RGB를 사용하면 C는 3) -> $$x^p \in \mathbb{R}^{N \times (P^2 \cdot C)}$$ flattened 2D patche들로 바꿔준다. N은 여기서 $$x^p \in \mathbb{R}^{N \times (P^2 \cdot C)}$$ 식 그대로 원본 이미지 해상도를 패치 이미지 해상도로 나눠준 값으로 이해하면 될 것 같다. P는 논문에서 16으로 설정된 듯.
 
-** Expression **
+![Model Equation1](/assets/img/paper-review/vit_expression2.jpg)
+
+그 후에 Transformersms constant latent vector size D를 사용해서 논문에서 이에 맞춰 patch들을 flat하게 하고 D dimensions에 맞춰 projection 한다, 이 프로젝션 결과를 논문에서는 patch embeddings라고 한다<br>
+
+NLP에서는 BERT가 token을 사용하는데 이를 이미지에도 적용시켰다. 패치 임베딩의 맨 앞에 추가되어서 랜덤값으로 초기화 된 후 learnable embedding이기 때문에 학습되면서 이미지 전체를 요약하는 기능을 한다.<br>
+
+Position embedding 또한 learnable embedding이다. 임베딩해서 1D 인풋으로 들어가다보니까 위치 정보가 왜곡되기 때문에 각 벡터에 위치 정보를 붙여준 것이라고 보면 된다. 논문에서는 2D 정보를 줘봤자 효과가 있지 않아서 그냥 1D 정보만 주었다고 함.
+
+** Equation **
+![Model Equation2](/assets/img/paper-review/vit_expression1.jpg)
+
+이 사진은 ViT에서 일어나는 일들을 equations로 표현한 것이다. 입력은 이 전 사진에서 나온 9*(16^2*3)에 learnable embedding을 포함해서 10*768 크기의 벡터가 나온다. 그 후에 $$\text{LN}(x)_i = \gamma \cdot \frac{x_i - \mu}{\sqrt{\sigma^2 + \epsilon}} + \beta$$ 정규화를 거치고 Multi Head Self-Attention에 집어넣은 후 다시 정규화 시키고 MLP에 넣고 마지막으로 BERT에서 처럼 이미지의 대표 token $$y = \text{LN}(z^0_L)$$ 만 뽑으면 출력이다. <br>
+
+
 
 
 
