@@ -51,12 +51,10 @@ Attention 메커니즘은 Query, Key를 내적해서 코사인 유사도를 구�
 
 ### VIT
 
-VIT 모델은 기존 Transformer 모델을 가능한 한 변형없이 사용하기 때문에 입력값이 1D sequence of token dembedding이 되기 위해서 2D 이미지들을 
+VIT 모델은 기존 Transformer 모델을 가능한 한 변형없이 사용하기 때문에 입력값이 1D sequence of token dembedding이 되기 위해서 2D 이미지들을 $$x \in \mathbb{R}^{H \times W \times C}$$
 
 ** Expression **
-![Model Expression](/assets/img/paper-review/vit_expression1.png)
 
-z^0 = [x_\text{class}; \, x^1_pE; \, x^2_pE; \, \dots; \, x^N_pE] + E_\text{pos}
 
 
 ### FINE-TUNING AND HIGHER RESOLUTION
@@ -65,6 +63,7 @@ z^0 = [x_\text{class}; \, x^1_pE; \, x^2_pE; \, \dots; \, x^N_pE] + E_\text{pos}
 
 ResNet, Vision Transformer, hybrid의 표현 학습 능력을 평가했다.<br>
 ~~ILSVRC-2012 ImageNet 데이터셋(1000 classes, 1.3M images), superset ImageNet-21k(21k classes, 14M images), JFT(18k classes, 303M high resolution images)을 사용했다. benchmark로는 ImageNet의 original validation labels와 cleaned-up Real labels, CIFAR-10/100, Oxford-IIIT Pets, Oxford Flowers-102를 사용했다.~~
+
 
 ### SETUP
 
@@ -88,9 +87,6 @@ ResNet, Vision Transformer, hybrid의 표현 학습 능력을 평가했다.<br>
 
 ### SUMMARY
 
-## 가설
-CNN 고유의 inductive bias 없이도, 대규모 데이터로 사전학습한다면 CNN 의존이 없는 Transformer만으로도 이미지 인식에서 SOTA 성능을 달성할 수 있다
-
 
 ## 🐈 CONCULUSION
 
@@ -101,7 +97,7 @@ CNN 고유의 inductive bias 없이도, 대규모 데이터로 사전학습한�
 2. self-supervised와 large-scale supervised 간의 성능 차이 줄이기
 3. ViT 스케일링을 통해 더 나은 성능 도출해내기
 
-## 나의 생각 및 궁금증
+## 🐈 나의 생각 및 궁금증
 
 * 논문을 읽고 난 후에 든 생각들입니다.
 
@@ -110,5 +106,6 @@ CNN 고유의 inductive bias 없이도, 대규모 데이터로 사전학습한�
 3. 왜 16x16 패치를 사용했을까, 48x48 크기의 이미지를 9등분 한 이유가 무엇일까?
 4. Query, Key, Value를 현재 처리중인 데이터 토큰, 다른 주변 토큰, Q,K 사이의 유사도를 표현하는 V라고 본다면 이미지 처리에서 Query, Key, Value는 어떤 의미를 가질까? 
 
-
+Vision 분야에 계속 흥미가 있어서 다음 논문 리뷰도 이미지 인식 관련해서 찾아보려고 합니다. 이번에 Transformer Model을 사용하는 VIT 논문을 리뷰 했는데 다음에는 이에 대항해서 Convolution 연산 위주인 **ConvNeXt (2022, Liu et al.)**를 리뷰하려고 합니다.<br>
+감사합니다
 Next Paper Review would be **ConvNeXt (2022, Liu et al.)!** i've got curiosity of CNN, and i will going to dig it.
