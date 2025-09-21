@@ -5,7 +5,7 @@ subtitle: "an image is worth 16x16 words transformers for image recognition at s
 category: review
 tags: ai
 image:
-  path: /assets/img/paper-review/vit_architecture.jpg
+  path: /assets/img/paper-review/vit-architecture.jpg
 ---
 
 기존에 Vision 분야에서 쓰이던 pre-training, transfer learning을 NLP 테스크에서 응용했는데 이제는 Transformer 아키텍처가 Vision 분야에 쓰이는 것이 흥미로워서 이 논문을 선택해 리뷰하게 되었습니다.
@@ -47,13 +47,13 @@ Attention Architecture는 Computing Resource만 infinite 하다면 이론적으�
 Attention 메커니즘은 Query, Key를 내적해서 코사인 유사도를 구한 후 스케일링한 가중치를 Value에 곱해주는 방식을 의미하는데, Self-Attention이란 말 그대로 하나의 입력에서 이 메커니즘을 수행하는 것을 말한다.
 
 ## 🍠 METHOD
-![Model Architecture](/assets/img/paper-review/vit_architecture.jpg)
+![Model Architecture](/assets/img/paper-review/vit-architecture.jpg)
 
 ### VIT
 
 VIT 모델은 기존 Transformer 모델을 가능한 한 변형없이 사용하기 때문에 입력값이 1D sequence of token dembedding이 되기 위해서 2D 이미지들을 $$x \in \mathbb{R}^{H \times W \times C}$$ (H는 높이, W는 너비 C는 채널 개수다 RGB를 사용하면 C는 3) -> $$x^p \in \mathbb{R}^{N \times (P^2 \cdot C)}$$ flattened 2D patche들로 바꿔준다. N은 여기서 $$x^p \in \mathbb{R}^{N \times (P^2 \cdot C)}$$ 식 그대로 원본 이미지 해상도를 패치 이미지 해상도로 나눠준 값으로 이해하면 될 것 같다. P는 논문에서 16으로 설정된 듯.
 
-![Model Equation1](/assets/img/paper-review/vit_expression2.jpg)
+![Model Equation1](/assets/img/paper-review/vit-expression2.png)
 
 그 후에 Transformersms constant latent vector size D를 사용해서 논문에서 이에 맞춰 patch들을 flat하게 하고 D dimensions에 맞춰 projection 한다, 이 프로젝션 결과를 논문에서는 patch embeddings라고 한다<br>
 
@@ -62,7 +62,8 @@ NLP에서는 BERT가 token을 사용하는데 이를 이미지에도 적용시�
 Position embedding 또한 learnable embedding이다. 임베딩해서 1D 인풋으로 들어가다보니까 위치 정보가 왜곡되기 때문에 각 벡터에 위치 정보를 붙여준 것이라고 보면 된다. 논문에서는 2D 정보를 줘봤자 효과가 있지 않아서 그냥 1D 정보만 주었다고 함.
 
 * Equation
-![Model Equation2](/assets/img/paper-review/vit_expression1.jpg)
+
+![Model Equation2](/assets/img/paper-review/vit-expression1.png)
 
 이 사진은 ViT에서 일어나는 일들을 equations로 표현한 것이다. 입력은 이 전 사진에서 나온 9*(16^2*3)에 learnable embedding을 포함해서 10*768 크기의 벡터가 나온다. 그 후에 $$\text{LN}(x)_i = \gamma \cdot \frac{x_i - \mu}{\sqrt{\sigma^2 + \epsilon}} + \beta$$ 정규화를 거치고 Multi Head Self-Attention에 집어넣은 후 다시 정규화 시키고 MLP에 넣고 마지막으로 BERT에서 처럼 이미지의 대표 token $$y = \text{LN}(z^0_L)$$ 만 뽑으면 출력이다. <br>
 
