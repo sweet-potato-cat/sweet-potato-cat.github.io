@@ -16,7 +16,7 @@ image:
 {:toc}
 
 
-** 논문 분석 전에 든 생각 ** <br>
+**논문 분석 전에 든 생각** <br>
 왜 Vision Field를 CNN를 발전시키지 않고 Attention Mechanism에다가 도입하려고 하는 걸까? 라는 질문이 떠올라서 조금 찾아보았습니다. 우선 Transformer 방식의 장점을 찾아보면 데이터와 모델의 성능이 비례한다는 점이 있었습니다. CNN은 small datasets에서도 성능이 좋다는 장점이 있지만, 21세기에 매우매우 많은 데이터들이 존재하는데, 고정된 구조 때문에 이 데이터들을 다 활용하지 못하고 데이터와 모델의 성능의 정비례 관계가 잘 성립하지 않는다고 합니다.
 
 ### 🍠 ABSTRACT
@@ -51,7 +51,7 @@ Attention 메커니즘은 Query, Key를 내적해서 코사인 유사도를 구�
 
 ### VIT
 
-VIT 모델은 기존 Transformer 모델을 가능한 한 변형없이 사용하기 때문에 입력값이 1D sequence of token dembedding이 되기 위해서 2D 이미지들을 $$x \in \mathbb{R}^{H \times W \times C}$$ (H는 높이, W는 너비 C는 채널 개수다 RGB를 사용하면 C는 3) -> $$x^p \in \mathbb{R}^{N \times (P^2 \cdot C)}$$ flattened 2D patche들로 바꿔준다. N은 여기서 $$x^p \in \mathbb{R}^{N \times (P^2 \cdot C)}$$ 식 그대로 원본 이미지 해상도를 패치 이미지 해상도로 나눠준 값으로 이해하면 될 것 같다. P는 논문에서 16으로 설정된 듯.
+VIT 모델은 기존 Transformer 모델을 가능한 한 변형없이 사용하기 때문에 입력값이 1D sequence of token dembedding이 되기 위해서 2D 이미지들을 $$x \in \mathbb{R}^{H \times W \times C}$$ (H는 높이, W는 너비 C는 채널 개수다 RGB를 사용하면 C는 3) -> $$x^p \in \mathbb{R}^{N \times (P^2 \cdot C)}$$ flattened 2D patche들로 바꿔준다. N은 여기서 $$x^p \in \mathbb{R}^{N \times (P^2 \cdot C)}$$ 와 같다. 식 그대로 원본 이미지 해상도를 패치 이미지 해상도로 나눠준 값으로 이해하면 될 것 같다. P는 논문에서 16으로 설정된 것으로 보임.
 
 ![Model Equation1](/assets/img/paper-review/vit-expression2.png)
 
@@ -77,25 +77,28 @@ ViT의 입력이 꼭 raw datasets일 필요는 없다고 주장한다. 대신 CN
 
 ### FINE-TUNING AND HIGHER RESOLUTION
 
-모델을 pre-train할 때 large dataset으로 하고 fine-tuning 할 때 small dataset으로 훈련시킴(원래 하는 방식). fine-tuning 할 때는 pre-train 된 MLP를 뗀 다음에 작은 데이터 클래스 수인 K를 이용해서 D*K 짜리 layer를 하나 붙여서 사용했다. fine-tuning 할 때는 더 고해상도 이미지를 썼는데 패치 크기를 고정시키고 이처럼 하면 패치 개수가 늘어나서 더 많은 정보를 얻는 효과가 있는 것 같다.
+모델을 pre-train할 때 large dataset으로 하고 fine-tuning 할 때 small dataset으로 훈련시킴(원래 하는 방식). fine-tuning 할 때는 pre-train 된 MLP를 뗀 다음에 작은 데이터 클래스 수인 K를 이용해서 D*K 짜리 layer를 하나 붙여서 사용했다.<br>
+fine-tuning 할 때는 더 고해상도 이미지를 썼는데 패치 크기를 고정시키고 이처럼 하면 패치 개수가 늘어나서 더 많은 정보를 얻는 효과가 있는 것 같다.
 
 ## 🍠 EXPERIMENTS
 
 ResNet, Vision Transformer, hybrid의 표현 학습 능력을 평가했다.<br>
 
 
-
 ### SETUP
 
-* Datasets
+ILSVRC-2012 ImageNet 1.3M 개<br>
+ImageNet-21k 21k class에 14M개<br>
+JFT-300M 303M개<br>
+위 그룹의 데이터셋에서 pre-train을 한 다음에 전이 학습을 진행했다.
 
-* Model Varients
+![Model Equation2](/assets/img/paper-review/vit-model1.png)
 
-* Training & Fine-tuning
-
-* Metrics
+위 사진 처럼 모델 크기는 세 개로 나뉜다. 최소 파라미터가 86M이고 Huge모델은 무려 632M개다. b1 = 0.9, b2= 0.999로 설정한 Adam 옵티마이저를 사용하고, 전이 학습 단계에서는 배치 사이즈 512에 모멘텀 SGD를 사용했다. fine-tuning 할 때 해상도는 512를 사용했다.<br>
 
 ### COMPARISON TO STATE OF THE ART
+
+
 
 ### PRE-TRAINING DATA REQUIREMENTS
 
