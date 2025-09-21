@@ -32,8 +32,8 @@ Transformer를 CNN에 도입했다 보니, Attention is All You Need 논문에�
 
 ### Transformer Architecture
 Transformer Architecture는 기존 Seq2Seq 모델의 단점을 보안하고자 고안되었다.<br>
-1. Can't process at parallel
-2. Long Distance Dependency Problem
+1. Can't process at parallel<br>
+2. Long Distance Dependency Problem<br>
 
 시퀀스의 특성상 순차적으로 입력을 해야 했기에 parallel process conducting이 불가하고, 이 때문에 대규모의 데이터 처리에서는 매우 긴 시간이 필요하다.<br>
 또 Reference window의 크기가 한정되어 있기 때문에 시퀀스에서 멀리 떨어진 문장 또는 항목들과의 관계성은 학습이 되지 않았다.<br>
@@ -116,14 +116,14 @@ ViT는 Large Data가 필요한데 그 정도는 얼마만큼인지를 논문에�
 ![Model img3](/assets/img/paper-review/vit-model2.png)
 
 ViT가 이미지 데이터를 어떻게 내부적으로 처리하는지를 들여다본 섹션 CNN과 달리 inductive bias가 매우 약한데 잘 동작하는 이유를 확인해본 파트다.
-1. Embedding Layer 관찰
+1. Embedding Layer 관찰<br>
 ViT의 첫 단계에서 패치를 펼친 후 Linear Projection을 거치는 것을 확인했었다. 논문에서는 projection 행렬을 PCA로 분석하고 CNN 초기 필터처럼 edge나 색 대비 등 기본 시각 패턴을 감지하는 basis를 발견했다.<br>
 즉, ViT도 패치 내부의 저수준 특징을 학습한다. <br>
-2. Positional Embedding 관찰
+2. Positional Embedding 관찰<br>
 위에서 1D 위치 정보만을 그냥 앞에다 prepend 했는데 이렇게만 해도 모델이 알아서 공간 정보를 획득했다고 한다.<br>
-3. Attention Head 분석
+3. Attention Head 분석<br>
 어텐션 특징이 RNN 같은 모델과 다르게 문장 전체나 input 전체를 고려한다는 점인데 이미지 처리할 때 이 범위가 얼마나 되는지를 논문에서 측정했다. 어떤 head는 낮은 층에서부터 global한 범위를 고려하고 어떤 head는 local하게 집중하는 경향을 확인했다고 한다. 공통적인건 깊은 층으로 갈수록 Attention 하는 범위가 넓어지는 것.<br>
-4. 시각화
+4. 시각화<br>
 마지막으로 시각화를 해볼 때는 마지막 출력이었던 token이 결과를 도출할 때 주요하게 쓰이는 객체에 집중하는 패턴을 보였다. ViT가 알아서 분류에 필수적이라고 생각한 부분에 초점을 맞춘 것!!<br>
 
 ### SELF-SUPERVISION
