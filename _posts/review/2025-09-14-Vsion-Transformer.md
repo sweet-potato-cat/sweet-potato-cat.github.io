@@ -43,12 +43,17 @@ Attention Architecture는 Computing Resource만 infinite 하다면 이론적으�
 ![Model Architecture](/assets/img/paper-review/vit_architecture.jpg)
 
 ### VIT
+* 3.1 VISION TRANSFORMER (VIT)
+VIT 모델은 기존 Transformer 모델을 가능한 한 변형없이 사용하기 때문에 입력값이 1D sequence of token dembedding이 되기 위해서 2D 이미지들을 
 
 ### FINE-TUNING AND HIGHER RESOLUTION
 
 ## 가설
 CNN 고유의 inductive bias 없이도, 대규모 데이터로 사전학습한다면 CNN 의존이 없는 Transformer만으로도 이미지 인식에서 SOTA 성능을 달성할 수 있다
 ## 실험 과정 및 결과
+ResNet, Vision Transformer, hybrid의 표현 학습 능력을 평가했다.<br>
+ILSVRC-2012 ImageNet 데이터셋(1000 classes, 1.3M images), superset ImageNet-21k(21k classes, 14M images), JFT(18k classes, 303M high resolution images)을 사용했다. benchmark로는 ImageNet의 original validation labels와 cleaned-up Real labels, CIFAR-10/100, Oxford-IIIT Pets, Oxford Flowers-102를 사용했다. 
+
 ## 나의 생각 및 궁금증
 
 ## 결론
