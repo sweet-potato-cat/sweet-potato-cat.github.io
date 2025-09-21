@@ -101,15 +101,15 @@ JFT-300M 303M개<br>
 최신 기술과의 비교를 위해 다음과 같은 CNN 계열 모델을 선택했다.
 BiT와 Noisy Student 같은 모델들이 논문 발표 당시 높은 성능을 보유하고 있었다. 실험 조건은 다음과 같다.<br>
 ViT-L/16, ViT-H/14 모델을 사용했고 data sets은 JFT-300M과 ImageNet-21k에서 사전 학습하고 하드웨어는 TPUv3 클러스터를 썼다.
-평가는 다음처럼 ImageNet, CIFAR-10/100, Oxford Pets, Flowers-102, VTAB-19 tasks 방식을 선택했다.
+평가는 다음처럼 ImageNet, CIFAR-10/100, Oxford Pets, Flowers-102, VTAB-19 tasks 방식을 선택했다. 
 
 ### PRE-TRAINING DATA REQUIREMENTS
 
-ViT는 Large Data가 필요한데 그 정도는 얼마만큼인지를 논문에서 실험했다. 위에 setup과 같은 데이터셋을 사용해서 비교했다. 
+ViT는 Large Data가 필요한데 그 정도는 얼마만큼인지를 논문에서 실험했다. 위에 setup과 같은 데이터셋을 사용해서 비교했다. 데이터셋 샘플 수를 바꿀 때는 JFT-300M에서 9M, 30M, 90M 샘플로 축소해서 학습시키고 regularization을 추가하지 않고 모델의 intrinsic data 요구량을 평가했다.<br>
+결론: 가장 큰 데이터셋에서 모델 성능이 매우 좋음, 21세기는 데이터가 많아서 앞으로도 트랜스포머가 잘 쓰이지 않을까 싶다.
 
 ![Model img3](/assets/img/paper-review/vit-model3.png)
 
-### SCALING STUDY
 
 ### INSPECTING VISION TRANSFORMER
 
@@ -120,20 +120,15 @@ ViT가 이미지 데이터를 어떻게 내부적으로 처리하는지를 들�
 ViT의 첫 단계에서 패치를 펼친 후 Linear Projection을 거치는 것을 확인했었다. 논문에서는 projection 행렬을 PCA로 분석하고 CNN 초기 필터처럼 edge나 색 대비 등 기본 시각 패턴을 감지하는 basis를 발견했다.<br>
 즉, ViT도 패치 내부의 저수준 특징을 학습한다. <br>
 2. Positional Embedding 관찰
-위에서 1D 위치 정보만을 그냥 앞에다 prepend 했는데 이렇게만 해도 모델이 알아서 공간 정보를 획득했다고 한다.
+위에서 1D 위치 정보만을 그냥 앞에다 prepend 했는데 이렇게만 해도 모델이 알아서 공간 정보를 획득했다고 한다.<br>
 3. Attention Head 분석
-어텐션 특징이 RNN 같은 모델과 다르게 문장 전체나 input 전체를 고려한다는 점인데 이미지 처리할 때 이 범위가 얼마나 되는지를 논문에서 측정했다. 어떤 head는 낮은 층에서부터 global한 범위를 고려하고 어떤 head는 local하게 집중하는 경향을 확인했다고 한다. 공통적인건 깊은 층으로 갈수록 Attention 하는 범위가 넓어지는 것.
+어텐션 특징이 RNN 같은 모델과 다르게 문장 전체나 input 전체를 고려한다는 점인데 이미지 처리할 때 이 범위가 얼마나 되는지를 논문에서 측정했다. 어떤 head는 낮은 층에서부터 global한 범위를 고려하고 어떤 head는 local하게 집중하는 경향을 확인했다고 한다. 공통적인건 깊은 층으로 갈수록 Attention 하는 범위가 넓어지는 것.<br>
 4. 시각화
-마지막으로 시각화를 해볼 때는 마지막 출력이었던 token이 결과를 도출할 때 주요하게 쓰이는 객체에 집중하는 패턴을 보였다. ViT가 알아서 분류에 필수적이라고 생각한 부분에 초점을 맞춘 것!!
-
-
+마지막으로 시각화를 해볼 때는 마지막 출력이었던 token이 결과를 도출할 때 주요하게 쓰이는 객체에 집중하는 패턴을 보였다. ViT가 알아서 분류에 필수적이라고 생각한 부분에 초점을 맞춘 것!!<br>
 
 ### SELF-SUPERVISION
 
 NLP에서 Transformer가 좋은 성능을 낼 수 있었던 이유는 self-supervised 이다. 많이들 알다시피 NLP는 라벨이 없는 데이터로 학습을 하고 좋은 성능을 낸다. 연구에서는 이미지 분류에서도 이런 방식이 가능한지를 시도해본다. 논문에서 Masked Patch Prediction이라는 단순한 자가 지도 학습 방식을 도입했다. 이미지 일부 패치를 가려 놓은 후, 그 패치의 평균 색(3비트 표현, 총 512가지 색상)이나 축소된 버전을 예측하도록 학습시킨다. NLP에서 단어를 가리고 이 단어가 뭔지 맞히게 하는 방식과 거의 비슷하다고 볼 수 있다. 그렇게 한 결과 ViT-B/16 모델을 JFT-300M에서 self-supervised로 학습하면 ImageNet에서 79.9% 정확도가 나오고 같은 모델을 supervised pre-training 했을 때 83% 정확도가 나온다.
-
-### SUMMARY
-
 
 ## 🐈 CONCULUSION
 
