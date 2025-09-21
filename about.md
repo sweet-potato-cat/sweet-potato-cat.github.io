@@ -9,8 +9,6 @@ order: 1
 
 ## Hello!
 
-I'm **SweetPotatoCat** .<br>
-I'm AI student of **KHU**.<br>
 
 ***
 
@@ -25,13 +23,6 @@ _My motto to live by._
 
 > “This too shall pass.”
 
-## Re-evaluate your work processes
-
-## Don’t repeat yourself
-
-## Try a new process
-
-## Refine yourself
 
 [original post]
 
