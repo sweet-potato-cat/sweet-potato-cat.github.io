@@ -15,18 +15,21 @@ image:
 * this unordered seed list will be replaced by the toc
 {:toc}
 
-## 개요
-* 이 논문에서 사용한 이론이 pre-trainig과 transfer learning인데 원래는 Vision 분야에서 쓰이던 것이고 이를 LLM에서 응용했었는데, 이제는 NLP 분야의 Transfoermer를 Vision 분야에서 사용한다고 한다.
-### 초록
+
+** 논문 분석 전에 든 생각 **
+왜 Vision Field를 CNN를 발전시키지 않고 Attention Mechanism에다가 도입하려고 하는 걸까? 라는 질문이 떠올라서 조금 찾아보았습니다. 우선 Transformer 방식의 장점을 찾아보면 데이터와 모델의 성능이 비례한다는 점이 있었습니다. CNN은 small datasets에서도 성능이 좋다는 장점이 있지만, 21세기에 매우매우 많은 데이터들이 존재하는데, 고정된 구조 때문에 이 데이터들을 다 활용하지 못하고 데이터와 모델의 성능의 정비례 관계가 잘 성립하지 않는다고 합니다.
+
+### 🍠 ABSTRACT
 논문 이전 비전 분야에서는 Transformer를 직접적으로 사용하지 않고 제한적으로만 사용하고 있었고, Attention을 CNN과 결합, 대체하는 방식이었다.<br>
 이에, CNN에 의존하지 않고, 이미지를 패치로 분할해 순수 Transformer에 직접 입력하는 방식을 제안했으며, 이미지 패치를 NLP의 단어 토큰 처럼 취급해서 Transformer에 입력한 것이 이 논문의 가장 큰 특징이라고 생각했다.<br>
-논문의 가설을 통해 얻은 가장 주요한 결과는 **Huge Data**로 pre-training 한 후에, transfer learning을 하면 VIT가 SOTA CNN과 비슷하거나 더 나은 성능을 보인다는 것이다.<br>
-* 즉, 방대한 데이터와 전이학습만 있으면 CNN의 의존없이 Attention으로 높은 성능을 낼 수 있음!
+논문의 가설을 통해 얻은 가장 주요한 결과는 Large Data로 pre-training 한 후에, transfer learning을 하면 VIT가 SOTA CNN과 비슷하거나 더 나은 성능을 보인다는 것이다.<br>
+* 즉, 방대한 데이터와 전이학습만 있으면 CNN의 의존없이 Attention으로 높은 성능을 낼 수 있다!
 
-## 선행연구
+## 🍠 RELATED WORK
 Transformer를 CNN에 도입했다 보니, Attention is All You Need 논문에서 제기된 이론인 Transformer Architecture와 Self-Attention mechanism 이론이 본 논문에서 사용되었다.
 * Transformer Architecture (Vaswani et al., 2017)
 * Self-Attention mechanism
+
 ### Transformer Architecture
 Transformer Architecture는 기존 Seq2Seq 모델의 단점을 보안하고자 고안되었다.<br>
 1. Can't process at parallel
@@ -36,26 +39,76 @@ Transformer Architecture는 기존 Seq2Seq 모델의 단점을 보안하고자 �
 또 Reference window의 크기가 한정되어 있기 때문에 시퀀스에서 멀리 떨어진 문장 또는 항목들과의 관계성은 학습이 되지 않았다.<br>
 Attention Architecture는 Computing Resource만 infinite 하다면 이론적으로는 reference window 또한 infinite 하다.<br>
 또한, 기존 병렬화 문제가 해결되고 모든 Query 는 각각의 Key와 비교되기 때문에 Long Distance Dependency Problem 또한 해결될 수 있다<br>
+
 ### Self-Attention mechanism
 
+* 하나의 입력 안에서 존재하는 단어들 간의 관계를 고려하는 것이 Self-Attention mechanism의 핵심이다
 
-## 모델
+Attention 메커니즘은 Query, Key를 내적해서 코사인 유사도를 구한 후 스케일링한 가중치를 Value에 곱해주는 방식을 의미하는데, Self-Attention이란 말 그대로 하나의 입력에서 이 메커니즘을 수행하는 것을 말한다.
+
+## 🍠 METHOD
 ![Model Architecture](/assets/img/paper-review/vit_architecture.jpg)
 
 ### VIT
-* 3.1 VISION TRANSFORMER (VIT)
+
 VIT 모델은 기존 Transformer 모델을 가능한 한 변형없이 사용하기 때문에 입력값이 1D sequence of token dembedding이 되기 위해서 2D 이미지들을 
+
+** Expression **
+![Model Expression](/assets/img/paper-review/vit_expression1.png)
+
+z^0 = [x_\text{class}; \, x^1_pE; \, x^2_pE; \, \dots; \, x^N_pE] + E_\text{pos}
+
 
 ### FINE-TUNING AND HIGHER RESOLUTION
 
+## 🍠 EXPERIMENTS
+
+ResNet, Vision Transformer, hybrid의 표현 학습 능력을 평가했다.<br>
+~~ILSVRC-2012 ImageNet 데이터셋(1000 classes, 1.3M images), superset ImageNet-21k(21k classes, 14M images), JFT(18k classes, 303M high resolution images)을 사용했다. benchmark로는 ImageNet의 original validation labels와 cleaned-up Real labels, CIFAR-10/100, Oxford-IIIT Pets, Oxford Flowers-102를 사용했다.~~
+
+### SETUP
+
+* Datasets
+
+* Model Varients
+
+* Training & Fine-tuning
+
+* Metrics
+
+### COMPARISON TO STATE OF THE ART
+
+### PRE-TRAINING DATA REQUIREMENTS
+
+### SCALING STUDY
+
+### INSPECTING VISION TRANSFORMER
+
+### SELF-SUPERVISION
+
+### SUMMARY
+
 ## 가설
 CNN 고유의 inductive bias 없이도, 대규모 데이터로 사전학습한다면 CNN 의존이 없는 Transformer만으로도 이미지 인식에서 SOTA 성능을 달성할 수 있다
-## 실험 과정 및 결과
-ResNet, Vision Transformer, hybrid의 표현 학습 능력을 평가했다.<br>
-ILSVRC-2012 ImageNet 데이터셋(1000 classes, 1.3M images), superset ImageNet-21k(21k classes, 14M images), JFT(18k classes, 303M high resolution images)을 사용했다. benchmark로는 ImageNet의 original validation labels와 cleaned-up Real labels, CIFAR-10/100, Oxford-IIIT Pets, Oxford Flowers-102를 사용했다. 
+
+
+## 🐈 CONCULUSION
+
+** 이미지를 직접 트랜스포머에 적용시켰다. ** <br>
+기존의 연구들과는 달리 이미지를 패치들의 배열로 해석해서 트랜스포머 인코더에 적용한 것이 핵심이다. 또 논문에서 강조하듯이, large datasets로 pre-trained 된 모델에서 큰 성능을 발휘한다. 다른 이미지 분류 모델들과 성능은 비슷하거나 우월하면서 훈련 비용이 적게 든 다는 장점이 있다. <br>
+논문에서는 몇 가지 해결해야할 문제들을 나열했다. <br>
+1. ViT를 detection, segmentation 문제에 적용하기
+2. self-supervised와 large-scale supervised 간의 성능 차이 줄이기
+3. ViT 스케일링을 통해 더 나은 성능 도출해내기
 
 ## 나의 생각 및 궁금증
 
-## 결론
+* 논문을 읽고 난 후에 든 생각들입니다.
+
+1. 2D 이미지 정보를 통해서 그렇다할 성능 향상을 보이지 않아서 1D로 변환시켰는데, 유의미한 성능 향상이 나타나지 않은 이유는 무엇일까?
+2. Large Datasets이 필요한 것을 알겠지만, 성능과 데이터의 반비례 관계를 지표화 시킬 수 있을까?
+3. 왜 16x16 패치를 사용했을까, 48x48 크기의 이미지를 9등분 한 이유가 무엇일까?
+4. Query, Key, Value를 현재 처리중인 데이터 토큰, 다른 주변 토큰, Q,K 사이의 유사도를 표현하는 V라고 본다면 이미지 처리에서 Query, Key, Value는 어떤 의미를 가질까? 
+
 
 Next Paper Review would be **ConvNeXt (2022, Liu et al.)!** i've got curiosity of CNN, and i will going to dig it.
