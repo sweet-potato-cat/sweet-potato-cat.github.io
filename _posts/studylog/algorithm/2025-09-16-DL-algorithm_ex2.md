@@ -34,7 +34,7 @@ def matrixmult(n, A, B):
 계산크기는 입력값에 독립이다<br>
 
 **일정 시간복잡도**
-/assets/img/studylog/IMG_A8638B337EC5-1.jpeg
+![code1](/assets/img/studylog/IMG_A8638B337EC5-1.jpeg)
 $T(n) = n^3$<br>
 
 ## 1.5 binsearch_problem
@@ -73,7 +73,7 @@ x와 S[mid]의 비교<br>
 
 ### 시간복잡도
 입력값에 종속이다.<br>
-/assets/img/studylog/IMG_A13BEF9C7B9F-1.jpeg
+![code2](/assets/img/studylog/IMG_A13BEF9C7B9F-1.jpeg)
 
 ## 1.3 exchangesort_problem
 
