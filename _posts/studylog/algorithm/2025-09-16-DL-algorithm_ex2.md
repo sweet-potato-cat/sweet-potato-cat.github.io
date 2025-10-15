@@ -35,7 +35,7 @@ def matrixmult(n, A, B):
 
 **일정 시간복잡도**
 ![code1](/assets/img/studylog/IMG_A8638B337EC5-1.jpeg)
-$T(n) = n^3$<br>
+$`T(n) = n^3$`<br>
 
 ## 1.5 binsearch_problem
 
@@ -92,4 +92,4 @@ S[i]와 S[j]의 비교연산 -> j 루프에서 실행된다<br>
 
 ### 시간복잡도 분석
 교환정렬은 계산크기가 입력값에 독립이다.<br>
-for 문을 두 번 반복하니까 $T(n) = n^2$<br>
+for 문을 두 번 반복하니까 $`T(n) = n^2`$<br>
