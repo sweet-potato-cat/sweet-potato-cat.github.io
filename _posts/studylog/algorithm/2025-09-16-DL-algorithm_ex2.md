@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Introduce Algorithm 1 Code Analysis"
-subtitle: "Algorithm Ex1: 1.1 seqsearch, 1.2 arrsum, 1.3 exchangesort"
+title: "Introduce Algorithm 2 Code Analysis"
+subtitle: "Algorithm Ex1: 1.4 matrixmul, 1.5 binsearch, 1.7 fib2"
 category: studylog
 tags: algorithm
 ---
@@ -13,7 +13,7 @@ algorithm ex1.<br>
 * this unordered seed list will be replaced by the toc
 {:toc}
 
-## 1.4 matrixmult_problem.py
+## 1.4 matrixmul_problem.py
 
 ### 코드
 
@@ -31,8 +31,8 @@ def matrixmult(n, A, B):
 가장 안쪽의 곱셈연산<br>
 
 ### 시간복잡도 분석
-
 계산크기는 입력값에 독립이다<br>
+
 **일정 시간복잡도**
 /assets/img/studylog/IMG_A8638B337EC5-1.jpeg
 $T(n) = n^3$<br>
@@ -69,10 +69,11 @@ def binsearch(n, S, x):
 ```
 
 ### 단위연산
-덧셈연산 (비교나 할당이 아니다!)<br>
+x와 S[mid]의 비교<br>
 
 ### 시간복잡도
-입력값에 독립이고 $T(n) = n$<br>
+입력값에 종속이다.<br>
+/assets/img/studylog/IMG_A13BEF9C7B9F-1.jpeg
 
 ## 1.3 exchangesort_problem
 
