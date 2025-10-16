@@ -36,6 +36,8 @@ def matrixmult(n, A, B):
 ### 재귀관계식 적용 예
 **$\` i \le k \le j-1 \`$**<br>
 ![code1](/assets/img/studylog/IMG_DCCEED64810C-1.jpeg)
+시간복잡도 분석 과정
+![code1](/assets/img/studylog/IMG_D3CD4977EBF2-1.jpeg)
 **일정 시간복잡도**
 
 $`T(n) = n^3$`<br>
